@@ -33,7 +33,7 @@ jobs:
         archives: 'qtbase qtsvg'
         cache: 'false'
         cache-key-prefix: 'install-qt-action'
-        setup-python: 'false'
+        setup-python: 'true'
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_PREFIX_PATH=/opt/Qt/6.7.0/gcc_64
