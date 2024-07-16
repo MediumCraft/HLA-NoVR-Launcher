@@ -26,15 +26,15 @@ jobs:
         arch: 'win64_msvc2019_64'
         dir: '${{ github.workspace }}/example/'
         install-deps: 'true'
-        modules: 'qtcharts qtwebengine'
+        modules: 'qtcharts qtwebengine qtdeclarative'
         archives: 'qtbase qtsvg'
         cache: 'false'
         cache-key-prefix: 'install-qt-action'
         setup-python: 'true'
 
-    - name: QtQuick
-      run: |
-        sudo apt install qtdeclarative5-dev
+    #- name: QtQuick
+    #  run: |
+    #    sudo apt install qtdeclarative5-dev
 
     - name: Archive environment
       uses: actions/upload-artifact@v4.3.4
