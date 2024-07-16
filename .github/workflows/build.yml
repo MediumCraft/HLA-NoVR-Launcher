@@ -17,9 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: sudo apt-get -qq update && sudo apt-get install -y wget
-
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
@@ -29,11 +26,18 @@ jobs:
         arch: 'win64_msvc2019_64'
         dir: '${{ github.workspace }}/example/'
         install-deps: 'true'
-        modules: 'qtcharts qtwebengine qtquick'
+        modules: 'qtcharts qtwebengine'
         archives: 'qtbase qtsvg'
         cache: 'false'
         cache-key-prefix: 'install-qt-action'
         setup-python: 'true'
+
+    - name: QtQuick
+      runs: |
+        sudo apt install qtdeclarative5-dev
+        sudo apt install libgles2-mesa-devqtquickcontrols2-5-dev
+        sudo apt install qtquickcontrols2-5-dev
+
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_PREFIX_PATH=/opt/Qt/6.7.0/gcc_64
