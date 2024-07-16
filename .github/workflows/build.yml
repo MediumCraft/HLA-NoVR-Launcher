@@ -42,6 +42,11 @@ jobs:
       with:
         name: Build-Environment
         path: .
+    - name: Archive environment
+      uses: actions/upload-artifact@v4.3.4
+      with:
+        name: Build-Environment-QtQuick
+        path: /usr/lib/
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_PREFIX_PATH=/opt/Qt/6.7.0/gcc_64 -DQT_DEBUG_FIND_PACKAGE=ON
