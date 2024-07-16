@@ -35,6 +35,7 @@ jobs:
     - name: QtQuick
       run: |
         sudo apt install qt6-declarative-dev
+        sudo apt install qml-module-qtquick-controls
 
     - name: Archive environment
       uses: actions/upload-artifact@v4.3.4
