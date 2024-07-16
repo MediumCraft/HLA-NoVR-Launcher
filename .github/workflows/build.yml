@@ -38,7 +38,7 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
 
     - name: Upload artifact
-      uses: actions/upload-artifact@4.3.4
+      uses: actions/upload-artifact@v4.3.4
       with:
         name: NoVR-Launcher
         path: build
