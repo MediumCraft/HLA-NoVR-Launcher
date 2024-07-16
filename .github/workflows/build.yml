@@ -33,7 +33,7 @@ jobs:
         setup-python: 'true'
 
     - name: QtQuick
-      runs: |
+      run: |
         sudo apt install qtdeclarative5-dev
         sudo apt install libgles2-mesa-devqtquickcontrols2-5-dev
         sudo apt install qtquickcontrols2-5-dev
