@@ -21,7 +21,7 @@ jobs:
       run: |
         sudo apt-get -qq update
         sudo apt-get install -y wget gnupg software-properties-common
-        sudo add-apt-repository -y ppa:beineri/opt-qt-6.7.0
+        
         sudo apt-get update
         sudo apt-get install -y qt6base-dev qt6-tools-dev qt6-tools-dev-tools qt6-declarative-dev qt6-shadertools-dev
 
