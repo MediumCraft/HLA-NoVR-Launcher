@@ -20,16 +20,20 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get -qq update && sudo apt-get install -y wget
 
-    - name: Download and install Qt
-      run: |
-        wget https://download.qt.io/official_releases/qt/6.7/6.7.0/qt-opensource-linux-x64-6.7.0.run
-        chmod +x qt-opensource-linux-x64-6.7.0.run
-        ./qt-opensource-linux-x64-6.7.0.run --platform minimal --script qt-noninteractive.qs
-
-    - name: Set up Qt environment
-      run: |
-        echo "/opt/Qt/6.7.0/gcc_64/bin" >> $GITHUB_PATH
-        source /opt/Qt/6.7.0/gcc_64/bin/qt6-env.sh
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.7.*'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
+        dir: '${{ github.workspace }}/example/'
+        install-deps: 'true'
+        modules: 'qtcharts qtwebengine qtquick'
+        archives: 'qtbase qtsvg'
+        cache: 'false'
+        cache-key-prefix: 'install-qt-action'
+        setup-python: 'false'
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_PREFIX_PATH=/opt/Qt/6.7.0/gcc_64
